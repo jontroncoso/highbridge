@@ -4,7 +4,7 @@ exports.models = {
     id: 'Article',
     required: ['content', 'title'],
     properties: {
-   
+
       title: {
         type: 'string',
         description: 'Title of the article'
