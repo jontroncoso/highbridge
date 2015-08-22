@@ -38,10 +38,10 @@ module.exports = {
         enabled: true
       },
       facebook: {
-        clientID: 'APP_ID',
-        clientSecret: 'APP_SECRET',
+        clientID: '1620620574853410',
+        clientSecret: '64b11ae11e281f1b05d8654e0a6a6940',
         callbackURL: 'http://localhost:3000/api/auth/facebook/callback',
-        enabled: false
+        enabled: true
       },
       twitter: {
         clientID: 'CONSUMER_KEY',
