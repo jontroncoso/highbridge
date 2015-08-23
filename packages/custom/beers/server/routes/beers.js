@@ -29,12 +29,15 @@ module.exports = function(Beers, app, auth, database) {
   };
 
 
-  // Facebook
-  app.get('/auth/facebook',
-      passport.authenticate('facebook', { scope: ['email'] }));
-
-  app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/auth/login', scope: ['email'] }), beers.facebook);
+  //app.get('/auth/facebook',
+  //    passport.authenticate('facebook', { scope: ['email'] }));
+  //
+  //app.get('/auth/facebook/callback',
+  //  passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email'] }),
+  //  function(req, res) {
+  //    // Successful authentication, redirect home.
+  //    res.redirect('/');
+  //  });
 
   app.route('/api/beers')
       .get(beers.all)
