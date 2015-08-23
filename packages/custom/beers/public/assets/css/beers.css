@@ -1,3 +1,21 @@
-.beers-example h1 {
-  background-color: purple
+ul#beers {
+  list-style: none;
+  padding: 0;
+}
+#beers .highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+  position: relative;
+  color: #000;
+}
+#beers .highlight .controls {
+  position: absolute;
+  top: 5px;
+  right: 10px
+}
+#beers .highlight .editable-text {
+  clear: right;
 }

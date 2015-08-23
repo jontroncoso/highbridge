@@ -16,39 +16,39 @@ module.exports = {
     name: 'MEAN - A Modern Stack - Development'
   },
   strategies: {
-      local: {
-        enabled: true
-      },
-      facebook: {
-        clientID: 'DEFAULT_APP_ID',
-        clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/api/auth/facebook/callback',
-        enabled: false
-      },
-      twitter: {
-        clientID: 'DEFAULT_CONSUMER_KEY',
-        clientSecret: 'CONSUMER_SECRET',
-        callbackURL: 'http://localhost:3000/api/auth/twitter/callback',
-        enabled: false
-      },
-      github: {
-        clientID: 'DEFAULT_APP_ID',
-        clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/api/auth/github/callback',
-        enabled: false
-      },
-      google: {
-        clientID: 'DEFAULT_APP_ID',
-        clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/api/auth/google/callback',
-        enabled: false
-      },
-      linkedin: {
-        clientID: 'DEFAULT_API_KEY',
-        clientSecret: 'SECRET_KEY',
-        callbackURL: 'http://localhost:3000/api/auth/linkedin/callback',
-        enabled: false
-      }
+    local: {
+      enabled: true
+    },
+    facebook: {
+      clientID: '1620620574853410',
+      clientSecret: '64b11ae11e281f1b05d8654e0a6a6940',
+      callbackURL: 'http://beer.tronco.so/api/auth/facebook/callback',
+      enabled: true
+    },
+    twitter: {
+      clientID: 'DEFAULT_CONSUMER_KEY',
+      clientSecret: 'CONSUMER_SECRET',
+      callbackURL: 'http://localhost:3000/api/auth/twitter/callback',
+      enabled: false
+    },
+    github: {
+      clientID: 'DEFAULT_APP_ID',
+      clientSecret: 'APP_SECRET',
+      callbackURL: 'http://localhost:3000/api/auth/github/callback',
+      enabled: false
+    },
+    google: {
+      clientID: 'DEFAULT_APP_ID',
+      clientSecret: 'APP_SECRET',
+      callbackURL: 'http://localhost:3000/api/auth/google/callback',
+      enabled: false
+    },
+    linkedin: {
+      clientID: 'DEFAULT_API_KEY',
+      clientSecret: 'SECRET_KEY',
+      callbackURL: 'http://localhost:3000/api/auth/linkedin/callback',
+      enabled: false
+    }
   },
   emailFrom: 'SENDER EMAIL ADDRESS', // sender address like ABC <abc@example.com>
   mailer: {

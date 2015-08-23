@@ -1,54 +1,31 @@
 <div ng-controller="BeersController" ng-init="findBeer()">
-  <table class="table table-bordered table-hover table-condensed">
-    <tr style="font-weight: bold">
-      <!--<td>id</td>-->
-      <td style="width:25%">Name</td>
-      <td style="width:20%">Bar/Brewery</td>
-      <td style="width:20%">Type</td>
-      <td style="width:15%">%ABV</td>
-      <td style="width:20%">Edit</td>
-    </tr>
-    <tr ng-repeat="beer in beers">
-      <!--<td>{{beer._id || 'WHAT?'}} <input editable</td>-->
-      <td>
-        <span editable-text="beer.name" e-name="name" e-form="rowform" e-required>
-          {{ beer.name || 'empty' }}
+  <ul class="row" id="beers">
+    <li class="col-sm-12 col-md-6 col-lg-4" ng-repeat="b in beers">
+      <div class="highlight">
+        <h2><span editable-text="b.name" e-name="name" e-form="rowform" e-placeholder="Beer Name" e-required>{{ b.name || 'empty' }}</span></h2>
+        <h3><span editable-text="b.bar" e-name="bar" e-form="rowform" e-placeholder="Bar/Brewery" e-required>{{ b.bar || 'empty' }}</span></h3>
+        <span class="beer-type" editable-select="b.beerType" e-name="beerType" e-form="rowform" e-ng-options="t.value as t.text for t in beerTypes">
+          {{ showType(b) }}
         </span>
-      </td>
-      <td>
-        <span editable-text="beer.bar" e-name="bar" e-form="rowform" e-required>
-          {{ beer.bar || 'empty' }}
+        <span class="alcohol" editable-text="b.alcohol" e-name="alcohol" e-form="rowform" e-placeholder="%ABV" >
+          {{ b.alcohol || '' }}%
         </span>
-      </td>
-      <td>
-        <!-- editable group (select-remote) -->
-        <span editable-select="beer.beerType" e-name="beerType" e-form="rowform" e-ng-options="t.value as t.text for t in beerTypes">
-          {{ showType(beer) }}
-        </span>
-      </td>
-      <td>
-        <span editable-text="beer.alcohol" e-name="alcohol" e-form="rowform" >
-          {{ beer.alcohol || 'empty' }}
-        </span>
-
-      </td>
-      <td style="white-space: nowrap">
-        <!-- form -->
-        <form editable-form name="rowform" onbeforesave="saveBeer($data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == beer">
-          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-            save
-          </button>
-          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-            cancel
-          </button>
-        </form>
-        <div class="buttons" ng-show="!rowform.$visible">
-          <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-          <button class="btn btn-danger" ng-click="removeBeer($index)">del</button>
+        <div class="controls">
+          <form editable-form name="rowform" onbeforesave="saveBeer($data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="b == beer">
+            <button type="submit" ng-disabled="rowform.$waiting" class="btn-xs btn-primary">
+              save
+            </button>
+            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn-xs btn-default">
+              cancel
+            </button>
+          </form>
+          <div class="buttons" ng-show="!rowform.$visible">
+            <button class="btn-xs btn-primary" ng-click="rowform.$show()">edit</button>
+            <button class="btn-xs btn-danger" ng-click="removeBeer($index)">del</button>
+          </div>
         </div>
-      </td>
-    </tr>
-  </table>
-
-  <button class="btn btn-default" ng-click="addBeer()">Add row</button>
+      </div>
+    </li>
+  </ul>
+  <button class="btn btn-default" ng-click="addBeer()">Drink a new Beer</button>
 </div>

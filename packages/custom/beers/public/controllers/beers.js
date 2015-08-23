@@ -26,34 +26,16 @@ angular.module('mean.beers', ["xeditable"]).controller('BeersController', ['$sco
       return selected.length ? selected[0].text : 'Not set';
     };
 
-
-    //$scope.availableCircles = [];
-    //
-    //Circles.mine(function(acl) {
-    //  $scope.availableCircles = acl.allowed;
-    //  $scope.allDescendants = acl.descendants;
-    //});
-    //
-    //$scope.showDescendants = function(permission) {
-    //  var temp = $('.ui-select-container .btn-primary').text().split(' ');
-    //  temp.shift(); //remove close icon
-    //  var selected = temp.join(' ');
-    //  $scope.descendants = $scope.allDescendants[selected];
-    //};
-    //
-    //$scope.selectPermission = function() {
-    //  $scope.descendants = [];
-    //};
-
     $scope.addBeer = function() {
       $scope.beer = {
         '_id': null,
         name: '',
         bar: '',
         beerType: '',
-        alcohol: 0,
+        alcohol: 0
       };
       $scope.beers.push($scope.beer);
+
     };
 
     $scope.saveBeer = function(data, index) {
@@ -69,7 +51,8 @@ angular.module('mean.beers', ["xeditable"]).controller('BeersController', ['$sco
     };
 
     $scope.removeBeer = function(index) {
-      var response =  $http.delete('/api/beers/' + $scope.beers[index]._id);
+      var response;
+      if($scope.beers[index]._id)response = $http.delete('/api/beers/' + $scope.beers[index]._id);
       $scope.beers.splice(index, 1);
       return response;
     };
