@@ -114,7 +114,7 @@ module.exports = function(passport) {
           provider: 'facebook',
           facebook: profile._json,
           roles: ['authenticated'],
-          //picture: profile.picture.data.url
+          picture: profile.photos[0].value.split('?')[0]
         });
         user.save(function(err) {
           if (err) {
