@@ -135,10 +135,6 @@ module.exports = function(Beers) {
                         error: 'Cannot list the beers'
                     });
                 }
-
-                console.log('beers: %o', beers);
-                console.log(JSON.stringify(beers));
-
                 res.json(beers)
             });
 
