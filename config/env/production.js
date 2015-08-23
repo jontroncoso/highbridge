@@ -40,7 +40,7 @@ module.exports = {
       facebook: {
         clientID: '1620620574853410',
         clientSecret: '64b11ae11e281f1b05d8654e0a6a6940',
-        callbackURL: 'http://beer.tronco.so/api/auth/facebook/callback',
+        callbackURL: 'http://beer.tronco.so/auth/facebook/callback',
         enabled: true
       },
       twitter: {
