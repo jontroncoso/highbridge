@@ -39,6 +39,9 @@ var BeerSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
+    drinks: {
+        type: Array
+    },
     permissions: {
         type: Array
     },

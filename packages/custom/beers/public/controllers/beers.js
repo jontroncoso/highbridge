@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('mean.beers', ["xeditable"]).controller('BeersController', ['$scope', '$http', '$filter', '$stateParams', '$location', 'Global', 'Beers', 'MeanUser', 'Circles',
+angular.module('mean.beers', ["xeditable"]).run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+}).controller('BeersController', ['$scope', '$http', '$filter', '$stateParams', '$location', 'Global', 'Beers', 'MeanUser', 'Circles',
   function($scope, $http, $filter, $stateParams, $location, Global, Beers, MeanUser, Circles) {
     $scope.global = Global;
     $scope.beerTypes = [
@@ -37,16 +39,24 @@ angular.module('mean.beers', ["xeditable"]).controller('BeersController', ['$sco
       $scope.beers.push($scope.beer);
 
     };
+    $scope.drinkBeer = function(index) {
+      var data = $scope.beers[index];
+      console.log(data);
+      if(!data._id)return;
+      data.drinks.push(Date.now());
+      $scope.saveBeer(data, index);
+    };
 
     $scope.saveBeer = function(data, index) {
       var id = $scope.beers[index]._id;
-      data._id = id;
+      console.log('D: %o, I: %o', data._id, id);
       if(!id)
       {
         return $http.post('/api/beers', data).success(function(data){
           $scope.findBeer();
         });
       }
+      data._id = id;
       return $http.put('/api/beers/' + id, data);
     };
 

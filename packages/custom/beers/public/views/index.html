@@ -4,11 +4,11 @@
       <div class="highlight">
         <h2><span editable-text="b.name" e-name="name" e-form="rowform" e-placeholder="Beer Name" e-required>{{ b.name || 'empty' }}</span></h2>
         <h3><span editable-text="b.bar" e-name="bar" e-form="rowform" e-placeholder="Bar/Brewery" e-required>{{ b.bar || 'empty' }}</span></h3>
-        <span class="beer-type" editable-select="b.beerType" e-name="beerType" e-form="rowform" e-ng-options="t.value as t.text for t in beerTypes">
+        <span class="beer-type" editable-select="b.beerType" e-placeholder="Beer Type" e-name="beerType" e-form="rowform" e-ng-options="t.value as t.text for t in beerTypes">
           {{ showType(b) }}
         </span>
         <span class="alcohol" editable-text="b.alcohol" e-name="alcohol" e-form="rowform" e-placeholder="%ABV" >
-          {{ b.alcohol || '' }}%
+          {{ b.alcohol || '~' }}%
         </span>
         <div class="controls">
           <form editable-form name="rowform" onbeforesave="saveBeer($data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="b == beer">
@@ -24,6 +24,12 @@
             <button class="btn-xs btn-danger" ng-click="removeBeer($index)">del</button>
           </div>
         </div>
+        <div class="add-container">
+          <button class="btn-xl" ng-click="drinkBeer($index)">
+            <img src="/beers/assets/img/icon-add-beer.png" width="100%"> x {{b.drinks.length}}
+          </button>
+        </div>
+
       </div>
     </li>
   </ul>

@@ -19,3 +19,12 @@ ul#beers {
 #beers .highlight .editable-text {
   clear: right;
 }
+#beers .add-container {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  max-width: 25%;
+}
+#beers .add-container button {
+  padding: 10%;
+}

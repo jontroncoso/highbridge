@@ -62,6 +62,12 @@ module.exports = function(Beers) {
             beer = _.extend(beer, req.body);
             //console.log('beer: %o', beer);
 
+            //if(!beer.drinks)beer.drinks = [];
+            //beer.drinks.push(Date.now());
+            //console.log('BEER!');
+            //console.log(beer);
+            ////console.log(Date.now());
+            ////console.log('beer: %o', beer);
 
             beer.save(function(err) {
                 if (err) {
@@ -135,19 +141,13 @@ module.exports = function(Beers) {
                         error: 'Cannot list the beers'
                     });
                 }
+
+                console.log('beers: %o', beers);
+                console.log(JSON.stringify(beers));
+
                 res.json(beers)
             });
 
-        },
-
-        facebook: function(req, res) {
-            var payload = req.user;
-            var escaped = JSON.stringify(payload);
-            escaped = encodeURI(escaped);
-            // We are sending the payload inside the token
-            var token = jwt.sign(escaped, config.secret, { expiresInMinutes: 60*5 });
-            res.cookie('token', token);
-            res.redirect('/');
         }
     };
 }
