@@ -4,29 +4,8 @@
 // The Package is past automatically as first parameter
 module.exports = function(Beers, app, auth, database) {
 
-  //app.get('/api/beers/example/anyone', function(req, res, next) {
-  //  res.send('Anyone can access this');
-  //});
-  //
-  //app.get('/api/beers/example/auth', auth.requiresLogin, function(req, res, next) {
-  //  res.send('Only authenticated users can access this');
-  //});
-  //
-  //app.get('/api/beers/example/admin', auth.requiresAdmin, function(req, res, next) {
-  //  res.send('Only users with Admin role can access this');
-  //});
-  //
-  //app.get('/api/beers/example/render', function(req, res, next) {
-  //  Beers.render('index', {
-  //    package: 'beers'
-  //  }, function(err, html) {
-  //    //Rendering a view from the Package server/views
-  //    res.send(html);
-  //  });
-  //});
-
-
   var beers = require('../controllers/beers')(Beers);
+  var users = require('../controllers/users')(MeanUser);
 
   // Article authorization helpers
   var hasAuthorization = function(req, res, next) {
@@ -50,6 +29,13 @@ module.exports = function(Beers, app, auth, database) {
     next();
   };
 
+
+  // Facebook
+  app.get('/auth/facebook',
+      passport.authenticate('facebook', { scope: ['email'] }));
+
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/auth/login', scope: ['email'] }), users.authCallback);
 
   app.route('/api/beers')
       .get(beers.all)
