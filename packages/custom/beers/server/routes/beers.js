@@ -5,7 +5,6 @@
 module.exports = function(Beers, app, auth, database) {
 
   var beers = require('../controllers/beers')(Beers);
-  var users = require('../controllers/users')(MeanUser);
 
   // Article authorization helpers
   var hasAuthorization = function(req, res, next) {
@@ -35,7 +34,7 @@ module.exports = function(Beers, app, auth, database) {
       passport.authenticate('facebook', { scope: ['email'] }));
 
   app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/auth/login', scope: ['email'] }), users.authCallback);
+    passport.authenticate('facebook', { failureRedirect: '/auth/login', scope: ['email'] }), beers.facebook);
 
   app.route('/api/beers')
       .get(beers.all)
