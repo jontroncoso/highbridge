@@ -105,9 +105,9 @@ module.exports = function(passport) {
         if (user) {
           return done(err, user);
         }
-        //console.log('FACEBOOK: '.blue);
-        //console.log(profile);
-        user = new User({
+        console.log('FACEBOOK: '.blue);
+        console.log(profile);
+      user = new User({
           name: profile.displayName,
           email: profile.emails[0].value,
           username: profile.username || profile.emails[0].value.split('@')[0],
