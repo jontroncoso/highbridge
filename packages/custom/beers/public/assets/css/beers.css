@@ -19,14 +19,21 @@ ul#beers {
 #beers .highlight .editable-text {
   clear: right;
 }
-#beers .add-container {
+#beers button.add {
   position: absolute;
   right: 10px;
   bottom: 10px;
   max-width: 25%;
+  padding: 10px;
 }
-#beers .add-container button {
-  padding: 10%;
+#beers button.add img {
+  max-width: 90%;
+}
+#beers button.add span {
+  white-space: nowrap;
+}
+section.content {
+  margin-top: 95px;
 }
 #beers img.img-circle {
   position: absolute;

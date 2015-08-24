@@ -24,10 +24,12 @@
             <button class="btn-xs btn-danger" ng-click="removeBeer($index)">del</button>
           </div>
         </div>
+        <button class="btn-xl add" ng-click="drinkBeer($index)">
+          <img src="/beers/assets/img/icon-add-beer.png" width="50px">
+          <span> x {{b.drinks.length}}</span>
+        </button>
+
         <div class="add-container">
-          <button class="btn-xl" ng-click="drinkBeer($index)">
-            <img src="/beers/assets/img/icon-add-beer.png" width="100%"> x {{b.drinks.length}}
-          </button>
         </div>
         <img ng-src="{{b.userpicture}}" class="img-circle" ng-if="b.user.facebook">
       </div>
