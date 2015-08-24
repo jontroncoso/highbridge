@@ -26,10 +26,8 @@ module.exports = function(Beers) {
          * Create a beer
          */
         create: function(req, res) {
-            console.log('Hey Fuck Face!'.green);
             var beer = new Beer(req.body);
             beer.user = req.user;
-            console.log(beer);
 
 
             beer.save(function(err) {
@@ -57,18 +55,7 @@ module.exports = function(Beers) {
          */
         update: function(req, res) {
             var beer = req.beer;
-            console.log('BEER!');
-            console.log(beer);
             beer = _.extend(beer, req.body);
-            //console.log('beer: %o', beer);
-
-            //if(!beer.drinks)beer.drinks = [];
-            //beer.drinks.push(Date.now());
-            //console.log('BEER!');
-            //console.log(beer);
-            ////console.log(Date.now());
-            ////console.log('beer: %o', beer);
-
             beer.save(function(err) {
                 if (err) {
                     return res.status(500).json({
@@ -147,11 +134,8 @@ module.exports = function(Beers) {
                         beer.userpicture = 'http://graph.facebook.com/' + beer.user.facebook.id + '/picture?width=150';
                         beer.mine = req.user ? (beer.user._id == req.user._id) : false;
                     }
-
+                    beer.alcohol = beer.abv/100;
                 });
-
-                console.log('beers: %o', beers);
-                console.log(JSON.stringify(beers));
 
                 res.json(beers)
             });
