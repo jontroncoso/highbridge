@@ -28,3 +28,9 @@ ul#beers {
 #beers .add-container button {
   padding: 10%;
 }
+#beers img.img-circle {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 75px;
+}

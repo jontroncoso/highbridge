@@ -2,8 +2,12 @@
 
 angular.module('mean.beers', ["xeditable"]).run(function(editableOptions) {
   editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
-}).controller('BeersController', ['$scope', '$http', '$filter', '$stateParams', '$location', 'Global', 'Beers', 'MeanUser', 'Circles',
-  function($scope, $http, $filter, $stateParams, $location, Global, Beers, MeanUser, Circles) {
+}).controller('BeersController', ['$rootScope', '$scope', '$http', '$filter', '$stateParams', '$location', 'Global', 'Beers', 'MeanUser', 'Circles',
+  function($rootScope, $scope, $http, $filter, $stateParams, $location, Global, Beers, MeanUser, Circles) {
+
+    $rootScope.$on('logout', function(){
+      $scope.findBeer();
+    });
     $scope.global = Global;
     $scope.beerTypes = [
       {value: 'ipa', text: 'I.P.A.'},

@@ -135,12 +135,20 @@ module.exports = function(Beers) {
         all: function(req, res) {
             //var query = req.acl.query('Beer');
 
-            Beer.find({'user': req.user}).sort('-created').populate('user', 'name username').exec(function(err, beers) {
+            Beer.find({'user': req.user}).sort('-created').populate('user', 'name username facebook').lean().exec(function(err, beers) {
                 if (err) {
                     return res.status(500).json({
                         error: 'Cannot list the beers'
                     });
                 }
+                beers.map(function(beer){
+                    if(beer.user.facebook)
+                    {
+                        beer.userpicture = 'http://graph.facebook.com/' + beer.user.facebook.id + '/picture?width=150';
+                        beer.mine = req.user ? (beer.user._id == req.user._id) : false;
+                    }
+
+                });
 
                 console.log('beers: %o', beers);
                 console.log(JSON.stringify(beers));

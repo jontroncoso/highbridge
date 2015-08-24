@@ -8,9 +8,9 @@
           {{ showType(b) }}
         </span>
         <span class="alcohol" editable-text="b.alcohol" e-name="alcohol" e-form="rowform" e-placeholder="%ABV" >
-          {{ b.alcohol || '~' }}%
+          {{ b.alcohol || '~' }}%ABV
         </span>
-        <div class="controls">
+        <div class="controls" data-ng-if="b.mine">
           <form editable-form name="rowform" onbeforesave="saveBeer($data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="b == beer">
             <button type="submit" ng-disabled="rowform.$waiting" class="btn-xs btn-primary">
               save
@@ -29,7 +29,7 @@
             <img src="/beers/assets/img/icon-add-beer.png" width="100%"> x {{b.drinks.length}}
           </button>
         </div>
-
+        <img ng-src="{{b.userpicture}}" class="img-circle" ng-if="b.user.facebook">
       </div>
     </li>
   </ul>
