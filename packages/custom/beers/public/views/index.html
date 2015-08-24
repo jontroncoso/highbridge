@@ -10,7 +10,7 @@
         <span class="alcohol" editable-text="b.alcohol" e-name="alcohol" e-form="rowform" e-placeholder="%ABV" >
           {{ b.alcohol || '~' }}%ABV
         </span>
-        <div class="controls" data-ng-if="b.mine">
+        <div class="controls">
           <form editable-form name="rowform" onbeforesave="saveBeer($data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="b == beer">
             <button type="submit" ng-disabled="rowform.$waiting" class="btn-xs btn-primary">
               save
@@ -19,7 +19,7 @@
               cancel
             </button>
           </form>
-          <div class="buttons" ng-show="!rowform.$visible">
+          <div class="buttons" ng-show="!rowform.$visible && b.mine">
             <button class="btn-xs btn-primary" ng-click="rowform.$show()">edit</button>
             <button class="btn-xs btn-danger" ng-click="removeBeer($index)">del</button>
           </div>
