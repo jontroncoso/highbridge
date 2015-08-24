@@ -129,12 +129,9 @@ module.exports = function(Beers) {
                     });
                 }
                 beers.map(function(beer){
-                    if(beer.user.facebook)
-                    {
-                        beer.userpicture = 'http://graph.facebook.com/' + beer.user.facebook.id + '/picture?width=150';
-                        beer.mine = req.user ? (beer.user._id == req.user._id) : false;
-                    }
-                    beer.alcohol = beer.abv/100;
+                    if(beer.user.facebook)beer.userpicture = 'http://graph.facebook.com/' + beer.user.facebook.id + '/picture?width=150';
+                    beer.mine       = req.user ? (beer.user._id == req.user._id) : false;
+                    beer.alcohol    = beer.abv/100;
                 });
 
                 res.json(beers)
